@@ -1,0 +1,388 @@
+\documentclass[12pt]{spieman}  % 12pt font required by SPIE;
+%\documentclass[a4paper,12pt]{spieman}  % use this instead for A4 paper
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tocloft}
+\usepackage{lineno}
+\linenumbers
+\title{SPIE journal papers: sample manuscript showing style and formatting specifications}
+
+\author[a]{First Author}
+\author[a]{Second Author}
+\author[b]{Third Author}
+\author[a,b,*]{Fourth Author}
+\affil[a]{University Name, Faculty Group, Department, Street Address, City, Country}
+\affil[b]{Company Name, Street Address, City, Country}
+
+\renewcommand{\cftdotsep}{\cftnodots}
+\cftpagenumbersoff{figure}
+\cftpagenumbersoff{table} 
+\begin{document} 
+\maketitle
+
+\begin{abstract}
+\\
+\textbf{Significance:} Advances in Augmented Reality (AR) and Virtual Reality (VR) technologies offer new opportunities for tumor visualization, potentially transforming cancer surgery. This study presents a novel approach to brain tumor visualization using Apple Vision Pro and compares it with the established frameless stereotaxy method. Through a series of experiments involving a 3D-printed head model with two types of ball inserts, we evaluate the benefits and limitations of this approach, highlighting its potential advantages in surgical navigation.
+\\
+\textbf{Aim:} The aim of this paper is to demonstrate the feasibility and potential benefits of utilizing holographic display for 
+\end{abstract}
+
+\begin{itemize}
+    \item Introduction
+    \begin{itemize}
+        \item Background information on Technology for brain surgery
+        \begin{itemize}
+            \item Frameless Stereotaxy
+        \end{itemize}
+        \begin{itemize}
+            \item Issue with the current method
+            \begin{itemize}
+                \item Accuracy
+                \item Cost
+                \item etc
+            \end{itemize}
+
+        \end{itemize}
+        \item Utilizing XR technology to make improvements
+        \begin{itemize}
+            \item Current has a problem/not good enough
+            \item my method could have an impact
+        \item 
+    \end{itemize}
+    \item Object Tracking
+    \begin{itemize}
+        \item Brief introduction 
+        \begin{itemize}
+            \item Comparision on different methods
+            \item Brief comparision on available devices
+        \end{itemize}
+        \item Highlight Object Tracking Example used by AVP
+        \item 
+        \end{itemize}
+    \end{itemize}
+    \item Materials and Methods
+    \begin{itemize}
+        \item Materials: Simulated Head
+        \begin{itemize}
+            \item 3D printed head with insert
+        \end{itemize}
+        \item Method: Modifications on the Object Tracking Example
+        \begin{itemize}
+            \item CT scan
+            \item Process through 3D Slicer
+            \item Adding in 3D file, manual alignment
+        \end{itemize}
+    \end{itemize}
+    \item Results
+    \begin{itemize}
+        \item Delay
+        \item Hallucination
+        \begin{itemize}
+            \item Cause: lack of features
+        \end{itemize}
+        \item Accuracy
+        \begin{itemize}
+            \item Cause: hardware
+        \end{itemize}
+    \end{itemize}
+    \item Discussion
+    \item Conclusion
+\end{itemize}
+
+
+% Include a list of up to six keywords after the abstract
+\keywords{optics, photonics, light, lasers, journal manuscripts, LaTeX template}
+
+% Include email contact information for corresponding author
+{\noindent \footnotesize\textbf{*}Fourth author name,  \linkable{myemail@university.edu} }
+
+\begin{spacing}{2}   % use double spacing for rest of manuscript
+
+\section{Introduction}
+\label{sect:intro}  % \label{} allows reference to this section
+Recent advancements in Augmented Reality (AR) and Virtual Reality (VR)—collectively referred to as Extended Reality (XR)—introduce new ways to visualize tumors during surgery. This paper presents a method that utilizes Apple Vision Pro to visualize a brain tumor holographically. The goal is to enhance surgical precision and patient safety. Key advantages, limitations, and potential improvements are discussed. 
+
+\subsection{Frameless Stereotactic Navigation }
+
+\textbf{Method}
+
+ Frameless stereotaxy is a commonly used neurosurgical method for localizing brain tumors without rigid external frames. Preoperative CT or MRI scans are coregistered with the patient’s head using fiducial markers, allowing surgical tools to be tracked in 3D space. The method guides incision planning and target approach with intraoperative adjustments possible. It reduces physical trauma, minimizes incision size, and eliminates the discomfort associated with rigid fixation systems.
+
+\textbf{Accuracy}
+Targeting accuracy depends on both the registration technique and the anatomical region. In a controlled skull model experiment, the “Straight-guide 4 2D” technique produced a mean localization error (MLE) of 2.58 ± 0.51 mm and a vector error of 5.23 ± 0.54 mm, while the “Offset-guide 4 2D” improved accuracy to 1.66 ± 0.36 mm MLE and 3.32 ± 0.72 mm vector error. “Probe’s eye” planning yielded the best results at 0.33 ± 0.16 mm MLE and 1.00 ± 0.28 mm vector error. For comparison, frame-based CRW localization achieved 1.03 ± 0.19 mm MLE and 2.23 ± 0.14 mm vector error [\cite{Fitzpatrick01}].
+
+In cranio-maxillofacial applications, similar precision trends are observed. Splint-only registration methods resulted in errors up to 2.3 mm in the neurocranium, while combining a splint with two orbital implants improved accuracy to 1.2 mm [\cite{Luebbers08}]. Surface-based registration with a laser scanner achieved similar periorbital accuracy (<1.5 mm) but is susceptible to error from soft tissue deformation in clinical use [\cite{Luebbers08}].
+
+\textbf{Drawbacks}
+The precision of frameless stereotaxy degrades with increased distance from reference markers and is further compromised by intraoperative brain shift due to CSF loss, gravity, or resection. Registration methods relying on occlusal splints or skin-based landmarks may introduce additional error from misplacement or anatomical changes during surgery [\cite{Luebbers08}]. Furthermore, many systems require preoperative marker placement, which can be forgotten or become displaced between scanning and surgery. The method proposed in this paper addresses these issues by anchoring a holographic overlay using vision-based spatial tracking. This eliminates the need for physical registration and allows the 3D tumor projection to remain anatomically consistent despite intraoperative changes. 
+
+ 
+
+\subsection{Proposed Method Using Vision Pro }
+
+The method introduced here retains the spatial precision of frameless stereotaxy while reducing equipment overhead and workflow disruption. A 3D hologram of the tumor is anchored in world coordinates using the Apple Vision Pro. The overlay remains fixed relative to the patient’s head, providing a real-time, spatially aligned tumor visualization. Unlike wand-based navigation, this approach does not rely on external tracking hardware and reduces recalibration steps. By integrating AR directly into the surgeon’s field of view, the method enhances depth perception and spatial awareness, offering a streamlined, intuitive alternative to traditional systems.  
+
+\subsection{Page Setup and Fonts}
+
+All text and figures must fit inside a text area 6.5 in.\ wide by 9 in.\ high (16.51 by 22.86 cm). Manuscripts must be formatted for US letter paper, on which the margins should be 1 in.\ (2.54 cm) on the top, 1 in.\ on the bottom, and 1 in.\ on the left and right. 
+
+The Times New Roman font is used throughout the manuscript, in the sizes and styles shown in Table~\ref{tab:fonts}. If this font is not available, use a similar serif font. The manuscript should not contain headers or footers. Pages should be numbered.
+
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/CT Scan Layer.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/slicer Screenshot.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/slicer Screenshot DownSampled.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+
+\subsection{Ideology}
+It is common that either AR or VR devices (commonly referred together as XR) could project a 3D hologram. Utilizing Computer Vision algorithm(elaborate? How much), the hologram can stay stationary relative to the world coordinates. The 3D coordinates of this hologram can be changed freely using predefined offset or a GUI during usage. (The experiment use the former) This concept is called 3D Anchoring, where the 3D coordinates holds the hologram in place. Therefore, a hologram of a brain tumor derived from a medical CT scan can be placed at the exact location of the actual brain tumor and stay stationary relative to the head, guiding the surgeon towards the tumor during  surgery. 
+The current method used is a (wand) that is 3D coregistered with 3D targets placed on the patient's head. The wand use light and sound to signal the distance to the tumor. The method will be able to visualize the tumor in a 3D space, where the surgeon can use his/her sense of depth to find the best possible location for incision.
+
+\subsection{Process}
+In order to test the viability and accuracy of this method, an experiment is developed to quantify the crucial aspects. A 3D printed head is produced in order to simulate a real head. The head has a size of 15*15*18cm in order to fit in common medical CT scanners. Since the size of the head is more common for children, a structure that holds a simulated tumor is designed to hold a sphere with a 1cm diameter, close to the average size of a child head tumor. The figure shows the printed head with the tumor holder. 
+The head is scanned in a ()scanner. This scanner is commonly used to scan object with the size of() and a maximum dimension of(). The scanner take cone-shaped pictures and convolute the pictures to produce images with correct shape. Due to the dimension of the head, a custom sticky pod was used to mount the head at the bottom of the spinner without a mount. This issue introduce potential discrepancy to the scan, but the result images controlled error within micrometers, which is between $10^{-3}$ to $ 10^{-5}$ of this method. Therefore, the error is small enough to be neglected as it will not cause effect on measuring the accuracy of the method.
+Different materials were take into consideration when this experiment is produced. 
+
+
+
+
+\section{Parts of Manuscript}
+
+This section describes the normal structure of a manuscript and how each part should be handled. The appropriate vertical spacing between various parts of this document is achieved in LaTeX through the proper use of defined constructs, such as \verb|\section{}|. 
+
+\subsection{Title and Author Information}
+\label{sect:title}
+The article title appears left justified at the top of the first page. The title font is 16 pt., bold. The rules for capitalizing the title are the same as for sentences; only the first word, proper nouns, and acronyms should be capitalized. Do not begin titles with articles (for example, a, an, the) or prepositions (for example, on, by, etc.). The word ``novel'' should not appear in the title, as publication will imply novelty. Avoid the use of acronyms in the title, unless they are widely understood.
+
+The list of authors immediately follows the title, 18 points below. The font is 12 pt., bold and the author names are left justified. The author affiliations and addresses follow the names, in 10-pt., normal font and left justified. For multiple affiliations, each affiliation should appear on a separate line. Superscript letters (a, b, c, etc.) should be used to associate multiple authors with their respective affiliations. The corresponding author should be identified with an asterisk, and that person's email address should be provided below the keywords.
+
+\subsection{Abstract}
+The abstract should be a summary of the paper and not an introduction. Because the abstract may be used in abstracting journals, it should be self-contained (i.e., no numerical references) and substantive in nature, presenting concisely the objectives, methodology used, results obtained, and their significance. Please note that the following journals require the use of structured abstracts in manuscript submissions: \textit{Biophotonics Discovery}, \textit{Neurophotonics},  \textit{Journal of Biomedical Optics}, and \textit{Journal of Medical Imaging}. Structured abstracts are encouraged for the \textit{Journal of Micro/Nanolithography, MEMS, and MOEMS}. Helpful guidelines for structured abstracts are available on the website of the journal.
+
+\subsection{Subject terms/Keywords}
+Keywords are required. Please provide 3-6 keywords related to your paper. 
+
+\subsection{Body of Paper}
+The body of the paper consists of numbered sections that present the main findings. These sections should be organized to best present the material. Standard parts of a research paper: Introduction, Materials and Methods, Results, Discussion, and Conclusion.
+
+To provide transition elements in your paper, it is important to refer back (or forward) to specific sections. Such references are made by indicating the section number, for example, ``In Sec.\ 2 we showed...'' or ``Section 2.1 contained a description...'' If the word Section, Reference, Equation, or Figure starts a sentence, it is spelled out. When occurring in the middle of a sentence, these words are abbreviated Sec., Ref., Eq., and Fig. 
+
+At the first occurrence of an acronym, spell it out followed by the acronym in parentheses, for example, charge-coupled diode (CCD).
+
+\subsection{Footnotes}
+Due to problems with HTML display, use of the {\verb|\footnote{}|} command should be avoided. 
+
+\subsection{Appendices}
+Brief appendices may be included when necessary, such as derivations of equations, proofs of theorems, and details of algorithms. Equations and figures appearing in appendices should continue sequential numbering from earlier in the paper.
+
+\subsection{Disclosures}
+Use of Large Language Models (LLMs) and other AI tools must be disclosed along with all other tools used in the study. The disclosure should describe which AI tool was used and how it was used. AI tools used in such methodologies as data collection and figure creation should be disclosed in the Materials and Methods section or a similar section of the paper.
+
+Conflicts of interest should be declared under a separate header, above Acknowledgments. Conflicts of interest include relationships, affiliations, and financial interests pertinent to the research presented in a manuscript. Potential conflicts of interest may include employment, ownership of stock or stock options, patents, honoraria, grants, royalties, consultancies, donations, and other types of funding. Even the appearance of a conflict can constitute a breach of ethical publishing, and therefore situations and activities that may be perceived as conflicts should be reported. Conflict of interest disclosures should cover the past three years. For assistance generating a disclosure statement, see the form available from  the International Committee of Medical Journal Editors website: 
+\linkable{http://www.icmje.org/conflicts-of-interest/} 
+
+If no conflicts of interest exist, a statement confirming “The authors declare that there are no financial interests, commercial affiliations, or other potential conflicts of interest that could have influenced the objectivity of this research or the writing of this paper” is included in a Disclosures section of the manuscript. 
+
+\subsection{Code, Data, and Materials Availability}
+In support of open scientific exchange, SPIE journals require Data and Code Availability Statements in all accepted papers. This requirement went into effect on 1 May 2023. These statements should describe how to access any data that would be required to replicate or interpret the findings reported in the paper.  
+
+\subsection{Acknowledgments}
+ Acknowledgments and funding information should be added after the conclusion, and before references. The acknowledgments section does not have a section number. Include grant numbers and the full name of the funding body. Use of large language models and other AI tools for language and grammar clean-up should also be disclosed here.
+
+\subsection{References}
+The References section lists books, articles, and reports that are cited in the paper. This section does not have a section number. The references are numbered in the order in which they are cited. Examples of the format to be followed are given at the end of this document.
+
+The reference list at the end of this document is created using BibTeX, which looks through the file {\ttfamily report.bib} for the entries cited in the LaTeX source file.  The format of the reference list is determined by the bibliography style file {\ttfamily spiejour.bst}, as specified in the \\ \verb|\bibliographystyle{spiejour}| command.  Alternatively, the references may be directly formatted in the LaTeX source file.
+
+For books\cite{Lamport94,Alred03,Goossens97} the listing includes the list of authors (initials plus last name), book title (in italics), page or chapter numbers, publisher, city, and year of publication.  Journal-article references \cite{Metropolis53,Harris06} include the author list, title of the article (in quotes), journal name (in italics, properly abbreviated), volume number (in bold), inclusive page numbers or citation identifier, and year.  A reference to a proceedings paper or a chapter in an edited book\cite{Gull89a} includes the author list, title of the article (in quotes), conference name (in italics), editors (if appropriate), volume title (in italics), volume number if applicable (in bold), inclusive page numbers, publisher, city, and year.  References to an article in the SPIE Proceedings may include the conference name, as shown in Ref.~\citenum{Hanson93c}.
+
+The references are numbered in the order of their first citation. Citations to the references are made using superscripts, as demonstrated in the preceding paragraph. One may also directly refer to a reference within the text, for example, ``as shown in Ref.~\citenum{Metropolis53} ...''  Two or more references should be separated by a comma with no space between them. Multiple sequential references should be displayed with a dash between the first and last numbers \cite{Alred03,Perelman97,Lamport94,Goossens97,Metropolis53}. 
+
+\subsubsection{Reference linking and DOIs}
+A Digital Object Identifier (DOI) is a unique alphanumeric string assigned to a digital object, such as a journal article or a book chapter, that provides a persistent link to its location on the internet. The use of DOIs allows readers to easily access cited articles. Authors should include the DOI at the end of each reference in brackets if a DOI is available. See examples at the end of this manuscript. A free DOI lookup service is available from CrossRef at \\\linkable{http://www.crossref.org/freeTextQuery/}. The inclusion of DOIs will facilitate reference linking and is highly recommended. 
+
+In the present LaTeX template, the author needs to add the DOI reference by including it in a ``note'' in the bibliography file, as shown in the file {\verb+report.bib+}, for example, \\ {\verb+note = "[doi:10.1117/12.154577]"+}. The DOI may be used by the reader to locate that document with the link: {\verb+http://dx.doi.org10.1117/12.154577+}. 
+
+\subsection{Biographies}
+A brief professional biography of approximately 75 words may be provided for each author, if available. Biographies should be placed at the end of the paper, after the references. Personal information such as hobbies or birthplace/birthdate should not be included. Author photographs are not published.
+
+\section{Section Formatting}
+\label{sect:sections}
+In LaTeX, a new section is created with the \verb|\section{}| command, which automatically numbers the sections. Sections will be numbered sequentially, starting with the first section after the abstract, except for the acknowledgments and references. (Note that numbering of section headings is not required, but the numbering must be consistent if used.) All section headings should be left justified.
+
+Main section headings are in 12-pt. bold font, left-justified and in title case, where important words are capitalized.
+
+Paragraphs that immediately follow a section heading are leading paragraphs and should not be indented, according to standard publishing style. The same goes for leading paragraphs of subsections and sub-subsections. Subsequent paragraphs are standard paragraphs, with 0.2-in (5 mm) indentation. There is no additional space between paragraphs. In LaTeX, paragraphs are separated by blank lines in the source file. Indentation of the first line of a paragraph may be avoided by starting it with \verb|\noindent|.
+
+\subsection{Subsection Headings}
+All important words in a subsection (level 1) header are capitalized. Subsection numbers consist of the section number, followed by a period, and the subsection number within that section, without a period at the end. The heading is left justified and its font is 12 pt. italic.
+
+\subsubsection{Sub-subsection headings}
+The first word of a sub-subsection is capitalized. The rest of the text is not capitalized, except for proper names and acronyms (the latter should only be used if well known). The heading is left justified and its font is 11 pt. italic. 
+
+\section{Figures and Tables}
+
+\subsection{Figures}
+
+Figures are numbered in the order in which they are called out in the text. They should appear in the document in numerical order and as close as possible to their first reference in the text. It may be necessary to move figures or tables around to enhance readability. LaTeX will attempt to place figures at the top or bottom of a page in which they are first referenced.
+
+Figures, along with their captions, should be separated from the main text by  0.2 in.\ or 5 mm and centered. Figure captions are centered below the figure or graph. Figure captions start with the abbreviation ``Fig'' in front of the figure number, followed by a period, and the text in 10-pt. font. See Fig.~\ref{fig:example} for an example.
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{c}
+\includegraphics[height=5.5cm]{mcr3b.eps}
+\end{tabular}
+\end{center}
+\caption 
+{ \label{fig:example}
+Example of a figure caption. } 
+\end{figure} 
+
+Authors may wish to create figures consisting of two or more images, in which case, they should be neatly arranged in a rectangular array.  In no case, should the article's text be wrapped around a figure. Figure~\ref{fig:example2} shows two side-by-side images. When a figure contains more than one image, the author must submit them as a single image file. Further details about figure formatting can be found in the author guidelines for each specific SPIE journal: \\
+\linkable {https://www.spiedigitallibrary.org/journals/journal-authors}. 
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{c}
+\includegraphics[height=9.0cm]{Pictures/Prescan PLA.jpg}
+\hspace{1.0cm}
+\includegraphics[height=9.0cm]{Pictures/Prescan Stainless Steel.jpg}  
+\\
+(a) \hspace{7.5cm} (b)
+\end{tabular}
+\end{center}
+\caption 
+{ \label{fig:example2}
+Example of a figure containing multiple images: (a) sun and (b) blob. Figures containing multiple images must be submitted to SPIE as a single image file.} 
+\end{figure} 
+
+\subsection{Tables}
+Tables are numbered in the order in which they are referenced. They should appear in the document in numerical order and as close as possible to their first reference in the text. It is preferable to have tables appear at the top or bottom of the page, if possible. Table captions are handled identically to those for figures, except that they appear above the table. See Table~\ref{tab:fonts} for an example.
+
+\subsection{Video}
+Acceptable file formats, including MOV (.mov), MPEG (.mpg), and MP4 (.mp4), are playable using standard media players, such as VLC or Windows Media Player. The recommended maximum size for each video file is 10-12 MB. Authors may insert a representative still image from the video file in the manuscript as a figure. The caption label will be linked by the publisher to the actual video file. The video may also be mentioned in an existing figure caption. Multimedia files are treated in the same manner as figures and they will be numbered sequentially with normal figures.  The video number, file type, and file size should be included in parentheses at the end of the figure caption. See Figure \ref{vid:satellite} for an example.
+
+\begin{video}
+\begin{center}
+{\includegraphics[height=5cm]{satellite.eps}}
+\\
+\end{center}
+\caption{\label{vid:satellite}This satellite is a still image from Video 1 (Video 1, MPEG, 2.5 MB).}
+\end{video}
+
+\appendix    % this command starts appendixes
+
+\section{Miscellaneous Formatting Details}
+\label{sect:misc}
+At times it may be desired, for formatting reasons, to break a line without starting a new paragraph. In a LaTeX source file, a linebreak is created with \verb|\\|.
+
+
+\subsection{Formatting Equations}
+Equations may appear inline with the text, if they are simple, short, and not of major importance; for example, $\beta = b/r$.  Important equations appear on their own line.  Such equations are centered.  For example, ``The expression for the field of view is
+\begin{equation}
+\label{eq:fov}
+2 a = \frac{(b + 1)}{3c} \, ,
+\end{equation}
+where $a$ is the ...''  Principal equations are numbered, with the equation number placed within parentheses and right justified.  
+
+Equations are considered to be part of a sentence and should be punctuated accordingly. In the above example, a comma appears after the equation because the next line is a subordinate clause. If the equation ends the sentence, a period should follow the equation. The line following an equation should not be indented unless it is meant to start a new paragraph. Indentation after an equation is avoided in LaTeX by not leaving a blank line between the equation and the subsequent text.
+
+References to equations include the equation number in parentheses, for example, ``Equation~(\ref{eq:fov}) shows ...'' or ``Combining Eqs.~(2) and (3), we obtain...'' Note that the word ``Equation'' is spelled out if it begins a sentence, but is abbreviated as ``Eq.'' otherwise. Using a tilde in the LaTeX source file between two characters avoids unwanted line breaks, for example between ``Eq.'' and the following equation number..
+
+\subsection{Formatting Theorems}
+
+To include theorems in a formal way, the theorem identification should appear in a 10-point, bold font, left justified, and followed by a period.  The text of the theorem continues on the same line in normal, 10-pt. font, achieved in LaTeX using \verb|\footnotesize|.  For example, 
+
+\vspace{2ex}\noindent{\footnotesize\textbf{Theorem 1.} For any unbiased estimator...}
+
+% \disclosures 
+\subsection*{Disclosures}
+Conflicts of interest include relationships, affiliations, and financial interests pertinent to the research presented in a manuscript. Potential conflicts of interest may include employment, ownership of stock or stock options, patents, honoraria, grants, royalties, consultancies, donations, and other types of funding. Even the appearance of a conflict can constitute a breach of ethical publishing, and therefore situations and activities that may be perceived as conflicts should be reported. Conflict of interest disclosures should cover the past three years. 
+
+If no conflicts of interest exist, a statement confirming “The authors declare that there are no financial interests, commercial affiliations, or other potential conflicts of interest that could have influenced the objectivity of this research or the writing of this paper” is included in a Disclosures section of the manuscript.
+
+
+
+\subsection* {Code, Data, and Materials Availability} 
+In support of open scientific exchange, SPIE journals require Code, Data, and Materials Availability Statements in all accepted papers. This requirement went into effect on 1 May 2023. These statements should describe how to access any data that would be required to replicate or interpret the findings reported in the paper. Authors are encouraged to make the data and code related to the manuscript publicly available whenever possible, and utilize repositories that are well-known to the field (FigShare, Github, CodeOcean, etc.). If the data or code cannot be made publicly available, the authors should state the reason and explain how it can be obtained. Likewise, if data sharing is not applicable, the statement must say so. Example statements may be found in the Author Guidelines for the journal.
+
+
+\begin{table}[ht]
+\caption{Fonts sizes and styles.} 
+\label{tab:fonts}
+\begin{center}       
+\begin{tabular}{|l|l|} %% this creates two columns
+%% |l|l| to left justify each column entry
+%% |c|c| to center each column entry
+%% use of \rule[]{}{} below opens up each row
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Document entity & Brief description  \\
+\hline\hline
+\rule[-1ex]{0pt}{3.5ex}  Article title & 16 pt., bold, left justified  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Author names & 12 pt., bold, left justified   \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Author affiliations & 10 pt., left justified   \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Abstract & 10 pt.  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Keywords & 10 pt.  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Section heading & 12 pt., bold, left justified  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Subsection heading & 12 pt., italic, left justified  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Sub-subsection heading & 11 pt., italic, left justified  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Normal text & 12 pt. \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Figure and table captions &  10 pt. \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table} 
+
+\subsection* {Acknowledgments}
+This unnumbered section is used to identify those who have aided the authors in understanding or accomplishing the work presented and to acknowledge sources of funding. Use of large language models and other AI tools for language and grammar clean-up should be disclosed here. 
+
+
+%%%%% References %%%%%
+
+\bibliography{report}   % bibliography data in report.bib
+\bibliographystyle{spiejour}   % makes bibtex use spiejour.bst
+
+%%%%% Biographies of authors %%%%%
+
+\vspace{2ex}\noindent\textbf{First Author} is an assistant professor at the University of Optical Engineering. He received his BS and MS degrees in physics from the University of Optics in 1985 and 1987, respectively, and his PhD degree in optics from the Institute of Technology in 1991.  He is the author of more than 50 journal papers and has written three book chapters. His current research interests include optical interconnects, holography, and optoelectronic systems. He is a member of SPIE.
+
+\vspace{1ex}
+\noindent Biographies and photographs of the other authors are not available.
+
+\listoffigures
+\listoftables
+
+\end{spacing}
+\end{document}
